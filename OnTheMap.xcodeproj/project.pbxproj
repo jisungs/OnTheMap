@@ -37,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		960A41DE205B114B00045F1E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				96137E562059BF96004CCF4C /* LoginController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		96137E382059BF4E004CCF4C = {
 			isa = PBXGroup;
 			children = (
@@ -59,7 +67,7 @@
 				96137E442059BF4E004CCF4C /* AppDelegate.swift */,
 				96137E462059BF4E004CCF4C /* ViewController.swift */,
 				96137E482059BF4E004CCF4C /* Main.storyboard */,
-				96137E562059BF96004CCF4C /* LoginController.swift */,
+				960A41DE205B114B00045F1E /* Controller */,
 				96137E4B2059BF4E004CCF4C /* Assets.xcassets */,
 				96137E4D2059BF4E004CCF4C /* LaunchScreen.storyboard */,
 				96137E502059BF4E004CCF4C /* Info.plist */,
