@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		961236A4205DAF0E00D43FAA /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961236A3205DAF0E00D43FAA /* BorderedButton.swift */; };
+		961236AB205DBED000D43FAA /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961236AA205DBED000D43FAA /* ParseConstants.swift */; };
+		961236AF205DBF4C00D43FAA /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961236AE205DBF4C00D43FAA /* ParseClient.swift */; };
 		96137E452059BF4E004CCF4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96137E442059BF4E004CCF4C /* AppDelegate.swift */; };
 		96137E472059BF4E004CCF4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96137E462059BF4E004CCF4C /* ViewController.swift */; };
 		96137E4A2059BF4E004CCF4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96137E482059BF4E004CCF4C /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		961236A3205DAF0E00D43FAA /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
+		961236AA205DBED000D43FAA /* ParseConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		961236AE205DBF4C00D43FAA /* ParseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		96137E412059BF4E004CCF4C /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96137E442059BF4E004CCF4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96137E462059BF4E004CCF4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +51,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		961236A7205DBDC800D43FAA /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				961236AE205DBF4C00D43FAA /* ParseClient.swift */,
+				961236AA205DBED000D43FAA /* ParseConstants.swift */,
+			);
+			path = Parse;
+			sourceTree = "<group>";
+		};
 		96137E382059BF4E004CCF4C = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +82,7 @@
 				96137E442059BF4E004CCF4C /* AppDelegate.swift */,
 				96137E462059BF4E004CCF4C /* ViewController.swift */,
 				961236A3205DAF0E00D43FAA /* BorderedButton.swift */,
+				961236A7205DBDC800D43FAA /* Parse */,
 				960A41DE205B114B00045F1E /* Controller */,
 				96137E4B2059BF4E004CCF4C /* Assets.xcassets */,
 				96137E482059BF4E004CCF4C /* Main.storyboard */,
@@ -150,9 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961236AF205DBF4C00D43FAA /* ParseClient.swift in Sources */,
 				96137E472059BF4E004CCF4C /* ViewController.swift in Sources */,
 				96137E572059BF96004CCF4C /* LoginController.swift in Sources */,
 				961236A4205DAF0E00D43FAA /* BorderedButton.swift in Sources */,
+				961236AB205DBED000D43FAA /* ParseConstants.swift in Sources */,
 				96137E452059BF4E004CCF4C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
