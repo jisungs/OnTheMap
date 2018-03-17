@@ -11,5 +11,19 @@ import UIKit
 
 class LoginController: UIViewController, UITextFieldDelegate{
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    //Outlet
+    @IBOutlet weak var idTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: BorderedButton!
+    @IBOutlet weak var fbLoginButton: BorderedButton!
+    
+    // Action
+    
+
+    @IBAction func loginPressed(_ sender: Any) {
+     
+    }
     
 }

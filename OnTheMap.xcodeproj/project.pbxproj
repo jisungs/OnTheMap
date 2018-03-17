@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		961236A4205DAF0E00D43FAA /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961236A3205DAF0E00D43FAA /* BorderedButton.swift */; };
 		96137E452059BF4E004CCF4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96137E442059BF4E004CCF4C /* AppDelegate.swift */; };
 		96137E472059BF4E004CCF4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96137E462059BF4E004CCF4C /* ViewController.swift */; };
 		96137E4A2059BF4E004CCF4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96137E482059BF4E004CCF4C /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		961236A3205DAF0E00D43FAA /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		96137E412059BF4E004CCF4C /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96137E442059BF4E004CCF4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96137E462059BF4E004CCF4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,9 +68,10 @@
 			children = (
 				96137E442059BF4E004CCF4C /* AppDelegate.swift */,
 				96137E462059BF4E004CCF4C /* ViewController.swift */,
-				96137E482059BF4E004CCF4C /* Main.storyboard */,
+				961236A3205DAF0E00D43FAA /* BorderedButton.swift */,
 				960A41DE205B114B00045F1E /* Controller */,
 				96137E4B2059BF4E004CCF4C /* Assets.xcassets */,
+				96137E482059BF4E004CCF4C /* Main.storyboard */,
 				96137E4D2059BF4E004CCF4C /* LaunchScreen.storyboard */,
 				96137E502059BF4E004CCF4C /* Info.plist */,
 			);
@@ -149,6 +152,7 @@
 			files = (
 				96137E472059BF4E004CCF4C /* ViewController.swift in Sources */,
 				96137E572059BF96004CCF4C /* LoginController.swift in Sources */,
+				961236A4205DAF0E00D43FAA /* BorderedButton.swift in Sources */,
 				96137E452059BF4E004CCF4C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
