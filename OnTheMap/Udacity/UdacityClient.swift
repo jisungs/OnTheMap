@@ -14,6 +14,7 @@ class UdacityClient{
     
     var udacityStudent: UdacityStudent? = nil
     
+    //initialize
     init(){
         
     }

@@ -49,5 +49,4 @@ struct ParseStudent {
     static func studentFromResults(_ results: [String:AnyObject]) -> ParseStudent {
         return ParseStudent(dictionary: results)
     }
-    
 }
