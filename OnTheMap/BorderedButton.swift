@@ -35,8 +35,6 @@ class BorderedButton: UIButton {
         themeBorderedButton()
     }
     
-    
-    
     private func themeBorderedButton() {
         layer.masksToBounds = true
         layer.cornerRadius = borderedButtonCornerRadius

@@ -18,7 +18,7 @@
 		96137E4A2059BF4E004CCF4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96137E482059BF4E004CCF4C /* Main.storyboard */; };
 		96137E4C2059BF4E004CCF4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96137E4B2059BF4E004CCF4C /* Assets.xcassets */; };
 		96137E4F2059BF4E004CCF4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96137E4D2059BF4E004CCF4C /* LaunchScreen.storyboard */; };
-		96137E572059BF96004CCF4C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96137E562059BF96004CCF4C /* LoginController.swift */; };
+		9647867B2061A727002EBD80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647867A2061A727002EBD80 /* LoginViewController.swift */; };
 		96615E03205EFF5D00CA49FF /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96615E02205EFF5D00CA49FF /* UdacityConstants.swift */; };
 		96615E06205EFF9400CA49FF /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96615E05205EFF9400CA49FF /* UdacityClient.swift */; };
 		96615E08205EFFB300CA49FF /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96615E07205EFFB300CA49FF /* UdacityConvenience.swift */; };
@@ -39,7 +39,7 @@
 		96137E4B2059BF4E004CCF4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96137E4E2059BF4E004CCF4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96137E502059BF4E004CCF4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96137E562059BF96004CCF4C /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		9647867A2061A727002EBD80 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		96615E02205EFF5D00CA49FF /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
 		96615E05205EFF9400CA49FF /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		96615E07205EFFB300CA49FF /* UdacityConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		960A41DE205B114B00045F1E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				96137E562059BF96004CCF4C /* LoginController.swift */,
+				9647867A2061A727002EBD80 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -193,12 +193,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9647867B2061A727002EBD80 /* LoginViewController.swift in Sources */,
 				961236AF205DBF4C00D43FAA /* ParseClient.swift in Sources */,
 				96615E03205EFF5D00CA49FF /* UdacityConstants.swift in Sources */,
 				961236B1205DCD4A00D43FAA /* ParseConvenience.swift in Sources */,
 				96615E06205EFF9400CA49FF /* UdacityClient.swift in Sources */,
 				96137E472059BF4E004CCF4C /* ViewController.swift in Sources */,
-				96137E572059BF96004CCF4C /* LoginController.swift in Sources */,
 				961236A4205DAF0E00D43FAA /* BorderedButton.swift in Sources */,
 				96615E0A205EFFD500CA49FF /* UdacityStudent.swift in Sources */,
 				961236AB205DBED000D43FAA /* ParseConstants.swift in Sources */,
