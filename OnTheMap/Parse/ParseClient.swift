@@ -16,7 +16,7 @@ class ParseClient{
     //authentication state
     var requestToken: String? = nil
     var sessionID: String? = nil
-    var userID: Int? = nil
+    var userID: String? = nil
     
     //Initializers
     init() {
