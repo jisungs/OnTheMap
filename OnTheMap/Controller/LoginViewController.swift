@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate{
+class LoginViewController: UIViewController {
     
     //variable
     var keyboardOnScreen = false
@@ -34,22 +34,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
     
 }
 
-extension LoginViewController {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+extension LoginViewController: UITextFieldDelegate{
     
-    // show hide keyboard
-    func keyboardWillsHow(_ notification:Notification){
-        if !keyboardOnScreen {
-        }
-    }
-    
-    func keyboardHeight(_ notification:Notification)->CGFloat{
-        let userInfo = (notification as Notification).userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        return keyboardSize.cgRectValue.height
-    }
+
     
 }
