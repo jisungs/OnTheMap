@@ -26,11 +26,21 @@ class LoginViewController: UIViewController {
     //Udacity Login process
     @IBAction func loginPressed(_ sender: Any) {
         
+        
     }
     
     //FaceBook Login Process
     
     @IBAction func fbLoginPressed(_ sender: Any) {
+    }
+    
+    private func checkTextFieldEmpty() -> Bool {
+        if idTextField.text!.isEmpty || passwordTextField.text!.isEmpty{
+            return true
+        }
+        else{
+            return false
+        }
     }
     
 }
