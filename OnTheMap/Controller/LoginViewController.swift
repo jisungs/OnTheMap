@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
     
     //Udacity Login process
     @IBAction func loginPressed(_ sender: Any) {
+        
     }
     
     //FaceBook Login Process
