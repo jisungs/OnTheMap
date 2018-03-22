@@ -36,6 +36,43 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate{
     
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: Show/Hide Keyboard
+    
+    func keyboardWillShow(_ notification: Notification) {
+        if !keyboardOnScreen {
+            view.frame.origin.y -= keyboardHeight(notification)
+        }
+    }
+    
+    func keyboardWillHide(_ notification: Notification) {
+        if keyboardOnScreen {
+            view.frame.origin.y += keyboardHeight(notification)
+        }
+    }
+    
+    func keyboardDidShow(_ notification: Notification) {
+        keyboardOnScreen = true
+    }
+    
+    func keyboardDidHide(_ notification: Notification) {
+        keyboardOnScreen = false
+    }
+    
+    private func keyboardHeight(_ notification: Notification) -> CGFloat {
+        let userInfo = (notification as NSNotification).userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        return keyboardSize.cgRectValue.height
+    }
+    
+    private func resignIfFirstResponder(_ textField: UITextField) {
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
+        }
+    }
     
 }
