@@ -47,7 +47,7 @@ class BorderedButton: UIButton {
     
     //MARK : Settoers
     
-    private func setBackingColor(_ newBackingColor: UIColor) {
+    func setBackingColor(_ newBackingColor: UIColor) {
         if let _ = backingColor {
             backingColor = newBackingColor
             backgroundColor = newBackingColor

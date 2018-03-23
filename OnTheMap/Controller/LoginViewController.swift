@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     
     //variable
     var keyboardOnScreen = false
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     //Outlet
     
@@ -25,6 +26,24 @@ class LoginViewController: UIViewController {
     
     //Udacity Login process
     @IBAction func loginPressed(_ sender: Any) {
+        startActivityIndicator(for: self, activityIndicator, .gray)
+        if checkTextFieldEmpty(){
+            showAlert(nil, message:"Email or PassWord is Empty")
+            stopActivityIndicator(for: self, activityIndicator)
+        }else{
+            UdacityClient.sharedInstance().authenticateWithLogin(idTextField.text!, passwordTextField.text!){
+                (success, errorString)in
+                performUIUpdatesOnMain {
+                    if success {
+                        self.completeLogin()
+                        self.resetControllerOnSuccess()
+                    }else {
+                        self.showAlert(nil, message: errorString!)
+                        self.resetControllerOnFailure()
+                    }
+                }
+            }
+        }
         
         
     }
@@ -34,6 +53,12 @@ class LoginViewController: UIViewController {
     @IBAction func fbLoginPressed(_ sender: Any) {
     }
     
+    private func completeLogin(){
+        let controller = storyboard!.instantiateViewController(withIdentifier:"MainNavigationController") as! UINavigationController
+        present(controller, animated:true, completion: nil)
+    }
+    
+    //Check textfield is Empty
     private func checkTextFieldEmpty() -> Bool {
         if idTextField.text!.isEmpty || passwordTextField.text!.isEmpty{
             return true
@@ -86,4 +111,16 @@ extension LoginViewController: UITextFieldDelegate{
         }
     }
     
+}
+
+extension LoginViewController {
+    func resetControllerOnSuccess(){
+        stopActivityIndicator(for: self, activityIndicator)
+        idTextField.text = nil
+        passwordTextField.text = nil
+    }
+    
+    func resetControllerOnFailure(){
+        stopActivityIndicator(for: self, activityIndicator)
+    }
 }
