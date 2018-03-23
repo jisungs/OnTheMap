@@ -53,6 +53,16 @@ class LoginViewController: UIViewController {
     @IBAction func fbLoginPressed(_ sender: Any) {
     }
     
+    @IBAction func signUpPressed(_ sender: Any) {
+        let urlString = UdacityClient.Constants.SignupPath
+        let url = URL(string: urlString)
+        if UIApplication.shared.canOpenURL(url!){
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        }
+        
+    }
+    
+    
     private func completeLogin(){
         let controller = storyboard!.instantiateViewController(withIdentifier:"MainNavigationController") as! UINavigationController
         present(controller, animated:true, completion: nil)
