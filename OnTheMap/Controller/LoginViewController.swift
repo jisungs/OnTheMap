@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
     @IBAction func fbLoginPressed(_ sender: Any) {
     }
     
+    //signup button pressed
     @IBAction func signUpPressed(_ sender: Any) {
         let urlString = UdacityClient.Constants.SignupPath
         let url = URL(string: urlString)
@@ -62,7 +63,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    
+    //Login is successed it give data to loginViewControeller
     private func completeLogin(){
         let controller = storyboard!.instantiateViewController(withIdentifier:"MainNavigationController") as! UINavigationController
         present(controller, animated:true, completion: nil)
@@ -80,6 +81,7 @@ class LoginViewController: UIViewController {
     
 }
 
+//textField related extention
 extension LoginViewController: UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -123,6 +125,7 @@ extension LoginViewController: UITextFieldDelegate{
     
 }
 
+//reset configuration.
 extension LoginViewController {
     func resetControllerOnSuccess(){
         stopActivityIndicator(for: self, activityIndicator)
@@ -132,5 +135,10 @@ extension LoginViewController {
     
     func resetControllerOnFailure(){
         stopActivityIndicator(for: self, activityIndicator)
+    }
+    
+    func configure(){
+        idTextField.delegate = self
+        passwordTextField.delegate = self
     }
 }
