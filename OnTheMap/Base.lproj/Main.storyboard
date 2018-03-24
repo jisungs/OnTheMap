@@ -131,16 +131,16 @@
             </objects>
             <point key="canvasLocation" x="-793" y="-123"/>
         </scene>
-        <!--Main Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="hIu-n2-Vni">
             <objects>
-                <navigationController id="4k8-0r-FBM" customClass="MainNavigationController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationController" id="4k8-0r-FBM" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Wr-jh-3uG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="LiL-Wi-klN" kind="show" id="SBh-uj-H3h"/>
+                        <segue destination="LiL-Wi-klN" kind="show" identifier="StudentTabBarController" id="SBh-uj-H3h"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETR-SO-uFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -250,10 +250,10 @@
             </objects>
             <point key="canvasLocation" x="1876" y="-467.3163418290855"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Students Tab Bar Controller-->
         <scene sceneID="NF9-tr-oFN">
             <objects>
-                <tabBarController id="LiL-Wi-klN" sceneMemberID="viewController">
+                <tabBarController id="LiL-Wi-klN" customClass="StudentsTabBarController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6f9-f9-TpM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
