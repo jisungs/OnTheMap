@@ -71,8 +71,8 @@
 				9647867A2061A727002EBD80 /* LoginViewController.swift */,
 				960F4C7D20644A7800038A12 /* GeneralViewController.swift */,
 				968A78602065B5A30003D38D /* MapViewController.swift */,
-				96133ED920659EEE0042E95F /* StudentsTabBarController.swift */,
 				968A78622065B5C50003D38D /* ListViewController.swift */,
+				96133ED920659EEE0042E95F /* StudentsTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
