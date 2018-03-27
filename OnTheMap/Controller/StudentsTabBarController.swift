@@ -23,7 +23,7 @@ class StudentsTabBarController: UITabBarController {
     @IBAction func addLocatoinPressed(_ sender: Any) {
         if let studentLocation = studentLocation{
         
-            askToContinueAlert(nil, message: ",User, \"\(studentLocation.firstName!) \(studentLocation.lastName!)\" Has Already Posted a Location. Would you like to Overwrite Their Location?", { (overwrite) in
+            askToContinueAlert(nil, message: ",User, \"\(studentLocation.firstName!) \(studentLocation.lastName!)\"Would you like to Overwrite Their Location?", { (overwrite) in
                 if overwrite {
                     self.performSegue(withIdentifier: "infoSegue", sender: sender)
                 }
