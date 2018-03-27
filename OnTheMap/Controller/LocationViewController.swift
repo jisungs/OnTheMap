@@ -29,5 +29,6 @@ class LocationViewController: UIViewController{
     }
     
     
+    @IBOutlet weak var mapview: MKMapView!
     
 }
