@@ -61,6 +61,7 @@ class LocationViewController: UIViewController{
          }
         }
      }
+    
     func putToExistingLocation(objectID: String, dictionary:[String:AnyObject]){
         ParseClient.sharedInstance().putToStudentLocation(objectID, dictionary,{(success, error) in
             if success{
@@ -82,6 +83,13 @@ class LocationViewController: UIViewController{
             self.updateUI(self.message!)
         })
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapView.delegate = self
+        finishButton.isHidden = true
+        lookupGeocoding()
     }
     
     func updateUI(_ message:String){
