@@ -260,6 +260,9 @@
                                 <state key="normal" title="Finish">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="finishPressed:" destination="I2e-2L-guT" eventType="touchUpInside" id="pWK-73-b9M"/>
+                                </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0Zj-fz-toy">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
@@ -278,7 +281,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Location" id="Rar-7E-Wer"/>
                     <connections>
-                        <outlet property="mapview" destination="0Zj-fz-toy" id="YrM-kr-heZ"/>
+                        <outlet property="finishButton" destination="s4p-OY-yGx" id="Iv3-YK-Vp0"/>
+                        <outlet property="mapView" destination="0Zj-fz-toy" id="P4g-PB-h3Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0EC-tM-zqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -297,7 +301,7 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="68" id="WaE-oI-BG1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCell" rowHeight="68" id="WaE-oI-BG1">
                                         <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WaE-oI-BG1" id="WEq-jD-oac">
