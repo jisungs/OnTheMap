@@ -33,6 +33,27 @@ class StudentsTabBarController: UITabBarController {
             performSegue(withIdentifier:"infoSegue", sender: sender)
         }
     }
+    
+    @IBAction func logout(_ sender: Any) {
+        let alertController = UIAlertController(title: nil, message: "Are you sure you want to sign out?", preferredStyle: .actionSheet)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { (action) -> Void in
+            
+            // Logout from Facebook if login method is Facebook login
+            /*if self.isFacebookLogin {
+                let loginManager = FBSDKLoginManager()
+                loginManager.logOut()
+            }*/
+            // then logout from Udacity
+            self.completeLogout()
+        })
+        
+        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     // logout message show
     func completeLogout(){
         UdacityClient.sharedInstance().sessionLogout{(success, erroString) in
@@ -51,6 +72,22 @@ class StudentsTabBarController: UITabBarController {
         if let errorString = errorString {
             print(errorString)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let userID = ParseClient.sharedInstance().userID!
+        
+        ParseClient.sharedInstance().getStudentLocation(userID, {(studentLocation, error) in
+            if let studentLocation = studentLocation {
+                self.studentLocation = studentLocation
+            }
+        })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshData()
     }
     
     //refresh data func
@@ -79,9 +116,6 @@ class StudentsTabBarController: UITabBarController {
             }
         }
     }
-}
-
-extension StudentsTabBarController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue"{
@@ -92,7 +126,9 @@ extension StudentsTabBarController {
             }
         }
     }
+    
 }
+
 
 
 
