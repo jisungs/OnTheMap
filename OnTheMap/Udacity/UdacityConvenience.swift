@@ -24,44 +24,6 @@ extension UdacityClient {
         }
     }
     
-    // Facebook Authentication
-    func authenticateWithFBLogin(_ accessToken: String, _ completionHandlerForFBAuth: @escaping (_ success: Bool, _ errorString: String?) -> Void) {
-        self.postFBSessionId(accessToken) { (success, sessionID, uniqueKey, errorString) in
-            
-            if success {
-                ParseClient.sharedInstance().sessionID = sessionID
-                ParseClient.sharedInstance().userID = uniqueKey
-                completionHandlerForFBAuth(success, nil)
-            } else {
-                completionHandlerForFBAuth(success, errorString)
-            }
-        }
-    }
-    // MARK: Facebook Session (POST) Method
-    
-    func postFBSessionId(_ accessToken: String, _ completionHandlerForSession: @escaping (_ success: Bool, _ sessionID: String?, _ uniqueKey: String?, _ errorString: String?) -> Void) {
-        
-        let parameters = [String:AnyObject]()
-        let jsonBody = "{\"facebook_mobile\": {\"\(UdacityClient.JSONBodyKeys.AccessToken)\": \"\(accessToken)\"}}"
-        
-        let _ = taskForPOSTMethod(Methods.Session, parameters: parameters as [String:AnyObject], jsonBody: jsonBody) { (results, error) in
-            
-            guard (error == nil) else {
-                completionHandlerForSession(false, nil, nil, error!.localizedDescription)
-                return
-            }
-            if let session = results?[UdacityClient.JSONResponseKeys.Session] as? [String:AnyObject], let account = results?[UdacityClient.JSONResponseKeys.Account] as? [String:AnyObject] {
-                
-                let sessionID = session[UdacityClient.JSONResponseKeys.SessionID] as? String
-                let uniqueKey = account[UdacityClient.JSONResponseKeys.UniqueKey] as? String
-                
-                completionHandlerForSession(true, sessionID, uniqueKey, nil)
-            } else {
-                print("Could not find \(UdacityClient.JSONResponseKeys.SessionID) in \(results!)")
-                completionHandlerForSession(false, nil, nil, "Login Failed (Session ID).")
-            }
-        }
-    }
     
     // MARK: Udacity Session (POST) Method
     

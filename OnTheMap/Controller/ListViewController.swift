@@ -20,13 +20,12 @@ class ListViewController: UIViewController {
     
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
-        
+        refreshTableView()
     }
-    
-    
 }
 
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return students.count
     }
@@ -64,8 +63,13 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     //refresh table data
-    func refreshTableView(){
+    /*func refreshTableView(){
         if (studentsTabelView) != nil{
+            studentsTabelView.reloadData()
+        }
+    }*/
+    func refreshTableView(){
+        if let studentsTableView = studentsTabelView {
             studentsTabelView.reloadData()
         }
     }

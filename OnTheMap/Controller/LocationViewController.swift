@@ -34,7 +34,7 @@ class LocationViewController: UIViewController{
     
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var finishButton: UIButton!
+    @IBOutlet weak var finishButton: BorderedButton!
     
     @IBAction func finishPressed(_ sender: Any) {
         
@@ -88,7 +88,7 @@ class LocationViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        finishButton.isHidden = true
+        finishButton.isHidden = false
         lookupGeocoding()
     }
     
@@ -96,6 +96,7 @@ class LocationViewController: UIViewController{
         performUIUpdatesOnMain {
             self.stopActivityIndicator(for: self, self.activityIndicator)
             self.showAlert(nil, message: self.message!, handler:{self.startOver()
+                self.startOver()
             })
         }
     }

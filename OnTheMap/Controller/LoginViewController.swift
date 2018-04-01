@@ -19,8 +19,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var fbLoginButton: UIButton!
+    @IBOutlet weak var loginButton: BorderedButton!
+    @IBOutlet weak var fbLoginButton: BorderedButton!
     
     //Action
     
