@@ -39,12 +39,6 @@ class StudentsTabBarController: UITabBarController {
         
         let yesAction = UIAlertAction(title: "Yes", style: .destructive, handler: { (action) -> Void in
             
-            // Logout from Facebook if login method is Facebook login
-            /*if self.isFacebookLogin {
-                let loginManager = FBSDKLoginManager()
-                loginManager.logOut()
-            }*/
-            // then logout from Udacity
             self.completeLogout()
         })
         

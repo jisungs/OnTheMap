@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class ParseClient{
+class ParseClient {
     // shared session
     var session = URLSession.shared
     
@@ -28,7 +28,7 @@ class ParseClient{
         
         /* 1. Set the parameters */
         var parametersWithApiKey = parameters
-        parametersWithApiKey[ParameterKeys.ApiKey] = Constants.ApiKey as AnyObject?
+       // parametersWithApiKey[ParameterKeys.ApiKey] = Constants.ApiKey as AnyObject?
         
         /* 2/3. Build the URL, Configure the request */
         let request = NSMutableURLRequest(url: parseURLFromParameters(parametersWithApiKey, withPathExtension: method))
