@@ -32,6 +32,9 @@ class ParseClient {
         
         /* 2/3. Build the URL, Configure the request */
         let request = NSMutableURLRequest(url: parseURLFromParameters(parametersWithApiKey, withPathExtension: method))
+        request.addValue(Constants.ApiKey, forHTTPHeaderField: ParameterKeys.ApiKey)
+        request.addValue(Constants.ApplicationID, forHTTPHeaderField: ParameterKeys.ApplicationID)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         
         /* 4. Make the request */
