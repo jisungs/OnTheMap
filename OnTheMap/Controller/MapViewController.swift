@@ -26,10 +26,10 @@ class MapViewController:UIViewController {
         removeAnnoations()
         
         for location in locations {
-            let lati = CLLocationDegrees(location.latitude)
-            let longti = CLLocationDegrees(location.longitude)
+            let lat = CLLocationDegrees(location.latitude)
+            let long = CLLocationDegrees(location.longitude)
             
-            let coordinate = CLLocationCoordinate2D(latitude: lati, longitude: longti)
+           let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             
             let first = location.firstName!
             let last = location.lastName!
