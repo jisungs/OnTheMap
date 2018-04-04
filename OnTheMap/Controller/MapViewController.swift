@@ -20,6 +20,7 @@ class MapViewController:UIViewController {
         mapView.removeAnnotation(annotations as! MKAnnotation)
         annotations.removeAll()
     }
+    // there is an error on logitude connetcioin
     
     func addAnnotationsToMapView(locations: [ParseStudent]){
         
