@@ -21,8 +21,11 @@ class MapViewController:UIViewController {
         annotations.removeAll()
     }
     // there is an error on logitude connetcioin
+
+
+
     
-    func addAnnotationsToMapView(locations: [ParseStudent]){
+  /*  func addAnnotationsToMapView(locations: [ParseStudent]){
         
         removeAnnoations()
         
@@ -76,6 +79,5 @@ extension MapViewController: MKMapViewDelegate{
                 })
             }
         }
-    }
-}
+    }*/
 
