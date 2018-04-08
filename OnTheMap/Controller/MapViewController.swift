@@ -12,6 +12,8 @@ import MapKit
 
 class MapViewController:UIViewController {
     
+    let locations = [ParseStudent]()
+    
     var annotations = [MKPointAnnotation]()
     
     @IBOutlet weak var mapView: MKMapView!
@@ -28,25 +30,26 @@ class MapViewController:UIViewController {
     
   func addAnnotationsToMapView(locations: [ParseStudent]){
         
-        removeAnnoations()
+        //removeAnnoations()
         
-        for location in locations {
-            let lat = CLLocationDegrees(location.latitude)
-            let long = CLLocationDegrees(location.longitude)
+        for dictionary in locations {
+            let lat = CLLocationDegrees(dictionary.latitude )
+            let long = CLLocationDegrees(dictionary.longitude )
             
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             
-            let first = location.firstName!
-            let last = location.lastName!
-            let mediaURL = location.mediaURL
+            let first = dictionary.firstName!
+            let last = dictionary.lastName!
+            let mediaURL = dictionary.mediaURL
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
-            annotation.title = "\(first) \(last)"
+            annotation.title = "\(String(describing: first)) \(String(describing: last))"
             annotation.subtitle = mediaURL
+            
             annotations.append(annotation)
         }
-        mapView.addAnnotations(annotations)
+        self.mapView.addAnnotations(annotations)
     }
 }
 
