@@ -34,7 +34,7 @@ class MapViewController:UIViewController {
             let lat = CLLocationDegrees(location.latitude)
             let long = CLLocationDegrees(location.longitude)
             
-           let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             
             let first = location.firstName!
             let last = location.lastName!
@@ -50,7 +50,20 @@ class MapViewController:UIViewController {
     }
 }
 
+
 extension MapViewController: MKMapViewDelegate{
+    
+    func getStudentLocations(){
+        
+        ParseClient.sharedInstance().getStudentLocations(){results, error in
+            if error != nil {
+                self.alert(message: "\(error!.localizedDescription)")
+            }else {
+                print("Getting student location completed")
+            
+            }
+        }
+    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reusedID = "pin"
