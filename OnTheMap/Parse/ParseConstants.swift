@@ -27,7 +27,7 @@ extension ParseClient {
         
         //Student Location
         static let StudentLocation = "/StudentLocation"
-        static let Put = "/StudentLocation/{objectId}"
+        static let Put = "/StudentLocation/<objectId>"
         
     }
     

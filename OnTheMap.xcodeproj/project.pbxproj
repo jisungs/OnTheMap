@@ -84,9 +84,9 @@
 		961236A7205DBDC800D43FAA /* Parse */ = {
 			isa = PBXGroup;
 			children = (
-				961236AE205DBF4C00D43FAA /* ParseClient.swift */,
 				961236AA205DBED000D43FAA /* ParseConstants.swift */,
 				961236B0205DCD4A00D43FAA /* ParseConvenience.swift */,
+				961236AE205DBF4C00D43FAA /* ParseClient.swift */,
 				961236B2205DCF2E00D43FAA /* ParseStudent.swift */,
 			);
 			path = Parse;
