@@ -90,7 +90,9 @@ class StudentsTabBarController: UITabBarController {
         
         let mapViewController = self.viewControllers?[0] as! MapViewController
         let listViewController = self.viewControllers?[1] as! ListViewController
+        let selectedViewControeller = self.selectedViewController
         
+        if selectedViewController is ListViewController{
         ParseClient.sharedInstance().getStudentLocations{
             (students, error) in
             if let students = students{
@@ -110,6 +112,7 @@ class StudentsTabBarController: UITabBarController {
             }
         }
     }
+}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue"{
