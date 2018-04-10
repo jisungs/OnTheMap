@@ -66,7 +66,7 @@ class StudentsTabBarController: UITabBarController {
             }
          }
     
-    //display error
+    //MARK: - display error
     func displayError(_ errorString:String?){
         if let errorString = errorString {
             print(errorString)
@@ -89,7 +89,7 @@ class StudentsTabBarController: UITabBarController {
         refreshData()
     }
     
-    //refresh data func
+    //MARK:- refresh data func
     func refreshData(){
         startActivityIndicator(for: self, activityIndicator, .whiteLarge)
         
@@ -113,12 +113,19 @@ class StudentsTabBarController: UITabBarController {
                 performUIUpdatesOnMain {
                     self.showAlert("NO Data", message:(error?.localizedDescription)!)
                     self.stopActivityIndicator(for: self, self.activityIndicator)
-                }
+                 }
+              }
+           }
+        }else if selectedViewController is MapViewController {
+            ParseClient.sharedInstance().getStudentLocations{
+                (students, error) in
+            if let studnets = students{
+                
             }
+            
         }
+      }
     }
-}
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue"{
             if let studentLocation = studentLocation{
