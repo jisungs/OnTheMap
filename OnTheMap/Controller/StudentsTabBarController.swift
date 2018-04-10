@@ -14,7 +14,7 @@ class StudentsTabBarController: UITabBarController {
     var studentLocation: ParseStudent?
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
-    // Actions
+    //MARK: - Actions
     
     @IBAction func refreshPressed(_ sender: Any) {
         refreshData()
@@ -50,10 +50,15 @@ class StudentsTabBarController: UITabBarController {
     
     // logout message show
     func completeLogout(){
+        //MARK : ADD ActivityIdicator
+        startActivityIndicator(for: self, activityIndicator, .gray)
+        
         UdacityClient.sharedInstance().sessionLogout{(success, erroString) in
             performUIUpdatesOnMain {
                 if success{
                     self.dismiss(animated: true, completion: nil)
+                    self.stopActivityIndicator(for: self, self.activityIndicator)
+                    
                 }else{
                     self.showAlert("LogOut Fail", message: "\(erroString!)")
                  }
