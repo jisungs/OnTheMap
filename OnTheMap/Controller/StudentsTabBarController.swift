@@ -95,7 +95,7 @@ class StudentsTabBarController: UITabBarController {
         
         let mapViewController = self.viewControllers?[0] as! MapViewController
         let listViewController = self.viewControllers?[1] as! ListViewController
-        let selectedViewControeller = self.selectedViewController
+        _ = self.selectedViewController
         
         if selectedViewController is ListViewController{
         ParseClient.sharedInstance().getStudentLocations{
@@ -119,12 +119,23 @@ class StudentsTabBarController: UITabBarController {
         }else if selectedViewController is MapViewController {
             ParseClient.sharedInstance().getStudentLocations{
                 (students, error) in
-            if let studnets = students{
+                if students != nil{
+                listViewController.students = students!
                 
-            }
-            
-        }
-      }
+                performUIUpdatesOnMain {
+                    mapViewController.addAnnotationsToMapView(locations: students!)
+                    listViewController.refreshTableView()
+                    
+                    self.stopActivityIndicator(for: self, self.activityIndicator)
+                  }
+                }else {
+                    performUIUpdatesOnMain {
+                        self.showAlert("No Data", message: (error?.localizedDescription)!)
+                        self.stopActivityIndicator(for: self, self.activityIndicator)
+                    }
+                }
+             }
+          }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue"{
