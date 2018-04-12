@@ -12,48 +12,70 @@ import MapKit
 
 class MapViewController:UIViewController {
     
+    var studentLocation: ParseStudent?
     
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    let locations = [ParseStudent]()
+    
+    var annotations = [MKPointAnnotation]()
     
     
     
     @IBOutlet weak var mapView: MKMapView!
     
     
-    override func viewDidLoad() {
+    /*override func viewDidLoad() {
         super.viewDidLoad()
+        let userID = ParseClient.sharedInstance().userID!
         
-        let locations = [ParseStudent]()
-        
-        var annotations = [MKPointAnnotation]()
-        
-        func removeAnnoations(){
-            mapView.removeAnnotation(annotations as! MKAnnotation)
-            annotations.removeAll()
-        }
-        
-        func addAnnotationsToMapView(locations: [ParseStudent]){
-            
-            //removeAnnoations()
-            
-            for dictionary in locations {
-                let lat = CLLocationDegrees(dictionary.latitude )
-                let long = CLLocationDegrees(dictionary.longitude )
-                
-                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                
-                let first = dictionary.firstName!
-                let last = dictionary.lastName!
-                let mediaURL = dictionary.mediaURL
-                
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title = "\(String(describing: first)) \(String(describing: last))"
-                annotation.subtitle = mediaURL
-                
-                annotations.append(annotation)
+        ParseClient.sharedInstance().getStudentLocation(userID, {(studentLocation, error) in
+            if let studentLocation = studentLocation {
+                self.studentLocation = studentLocation
             }
-            self.mapView.addAnnotations(annotations)
+        })
+    }*/
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshData()
+    }
+    
+    //MARK: refreshData()
+    func refreshData(){
+        //get activity inspector
+        startActivityIndicator(for: self, activityIndicator, .whiteLarge)
+        
+    }
+    
+    
+    func removeAnnoations(){
+        mapView.removeAnnotation(annotations as! MKAnnotation)
+        annotations.removeAll()
+    }
+    
+    func addAnnotationsToMapView(locations: [ParseStudent]){
+        
+        //removeAnnoations()
+        
+        for dictionary in locations {
+            let lat = CLLocationDegrees(dictionary.latitude )
+            let long = CLLocationDegrees(dictionary.longitude )
+            
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            
+            let first = dictionary.firstName!
+            let last = dictionary.lastName!
+            let mediaURL = dictionary.mediaURL
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(String(describing: first)) \(String(describing: last))"
+            annotation.subtitle = mediaURL
+            
+            annotations.append(annotation)
         }
+        self.mapView.addAnnotations(annotations)
     }
     
     func alert(message: String){
