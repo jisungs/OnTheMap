@@ -12,44 +12,52 @@ import MapKit
 
 class MapViewController:UIViewController {
     
-    let locations = [ParseStudent]()
     
-    var annotations = [MKPointAnnotation]()
+    
+    
     
     @IBOutlet weak var mapView: MKMapView!
     
-    func removeAnnoations(){
-        mapView.removeAnnotation(annotations as! MKAnnotation)
-        annotations.removeAll()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let locations = [ParseStudent]()
+        
+        var annotations = [MKPointAnnotation]()
+        
+        func removeAnnoations(){
+            mapView.removeAnnotation(annotations as! MKAnnotation)
+            annotations.removeAll()
+        }
+        
+        func addAnnotationsToMapView(locations: [ParseStudent]){
+            
+            //removeAnnoations()
+            
+            for dictionary in locations {
+                let lat = CLLocationDegrees(dictionary.latitude )
+                let long = CLLocationDegrees(dictionary.longitude )
+                
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                
+                let first = dictionary.firstName!
+                let last = dictionary.lastName!
+                let mediaURL = dictionary.mediaURL
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = "\(String(describing: first)) \(String(describing: last))"
+                annotation.subtitle = mediaURL
+                
+                annotations.append(annotation)
+            }
+            self.mapView.addAnnotations(annotations)
+        }
     }
-    // there is an error on logitude connetcioin
+    
     func alert(message: String){
         
-    }
-
-    
-  func addAnnotationsToMapView(locations: [ParseStudent]){
-        
-        //removeAnnoations()
-        
-        for dictionary in locations {
-            let lat = CLLocationDegrees(dictionary.latitude )
-            let long = CLLocationDegrees(dictionary.longitude )
-            
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            
-            let first = dictionary.firstName!
-            let last = dictionary.lastName!
-            let mediaURL = dictionary.mediaURL
-            
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "\(String(describing: first)) \(String(describing: last))"
-            annotation.subtitle = mediaURL
-            
-            annotations.append(annotation)
-        }
-        self.mapView.addAnnotations(annotations)
     }
 }
 
