@@ -39,7 +39,7 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    //Activity indicator
+    // Activity indicator
     // Get New Activity Indicator and Start Animating
     func startActivityIndicator(for controller: UIViewController, _ activityIndicator: UIActivityIndicatorView, _ style: UIActivityIndicatorViewStyle) {
         activityIndicator.center = controller.view.center

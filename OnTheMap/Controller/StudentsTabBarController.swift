@@ -48,9 +48,9 @@ class StudentsTabBarController: UITabBarController {
         present(alertController, animated: true, completion: nil)
     }
     
-    // logout message show
+    //MARK: -  logout message show
     func completeLogout(){
-        //MARK : ADD ActivityIdicator
+        //MARK: - ADD ActivityIdicator
         startActivityIndicator(for: self, activityIndicator, .gray)
         
         UdacityClient.sharedInstance().sessionLogout{(success, erroString) in
@@ -95,48 +95,27 @@ class StudentsTabBarController: UITabBarController {
         
         let mapViewController = self.viewControllers?[0] as! MapViewController
         let listViewController = self.viewControllers?[1] as! ListViewController
-        _ = self.selectedViewController
+        let selectedViewController = self.selectedViewController
         
-        if selectedViewController is ListViewController{
-        ParseClient.sharedInstance().getStudentLocations{
-            (students, error) in
-            if let students = students{
-                listViewController.students = students
+        ParseClient.sharedInstance().getStudentLocations{(students, error) in
+        if let students = students{
+            listViewController.students = students
+            
+            performUIUpdatesOnMain {
+                mapViewController.addAnnotationsToMapView(locations: students)
+                listViewController.refreshTableView()
                 
+                self.stopActivityIndicator(for: self, self.activityIndicator)
+            }
+        }else {
                 performUIUpdatesOnMain {
-                    mapViewController.addAnnotationsToMapView(locations: students)
-                    listViewController.refreshTableView()
-                    
+                    self.showAlert("No Data Found", message:(error?.localizedDescription)!)
                     self.stopActivityIndicator(for: self, self.activityIndicator)
-                     }
-            } else {
-                performUIUpdatesOnMain {
-                    self.showAlert("NO Data", message:(error?.localizedDescription)!)
-                    self.stopActivityIndicator(for: self, self.activityIndicator)
-                 }
+                }
               }
            }
-        }else if selectedViewController is MapViewController {
-            ParseClient.sharedInstance().getStudentLocations{
-                (students, error) in
-                if students != nil{
-                listViewController.students = students!
-                
-                performUIUpdatesOnMain {
-                    mapViewController.addAnnotationsToMapView(locations: students!)
-                    listViewController.refreshTableView()
-                    
-                    self.stopActivityIndicator(for: self, self.activityIndicator)
-                  }
-                }else {
-                    performUIUpdatesOnMain {
-                        self.showAlert("No Data", message: (error?.localizedDescription)!)
-                        self.stopActivityIndicator(for: self, self.activityIndicator)
-                    }
-                }
-             }
-          }
-    }
+        }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue"{
             if let studentLocation = studentLocation{

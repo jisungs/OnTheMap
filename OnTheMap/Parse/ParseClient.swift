@@ -187,7 +187,6 @@ class ParseClient {
         return nil
     }
     
-    //
     private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
         
         var parsedResult: AnyObject! = nil
