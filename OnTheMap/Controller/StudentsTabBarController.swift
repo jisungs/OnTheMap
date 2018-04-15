@@ -97,24 +97,35 @@ class StudentsTabBarController: UITabBarController {
         let listViewController = self.viewControllers?[1] as! ListViewController
         let selectedViewController = self.selectedViewController
         
-        ParseClient.sharedInstance().getStudentLocations{(students, error) in
-        if let students = students{
-            listViewController.students = students
-            
-            performUIUpdatesOnMain {
-                mapViewController.addAnnotationsToMapView(locations: students)
-                listViewController.refreshTableView()
-                
-                self.stopActivityIndicator(for: self, self.activityIndicator)
-            }
-        }else {
-                performUIUpdatesOnMain {
-                    self.showAlert("No Data Found", message:(error?.localizedDescription)!)
-                    self.stopActivityIndicator(for: self, self.activityIndicator)
+        if selectedViewController is ListViewController{
+            ParseClient.sharedInstance().getStudentLocation("studentLocation"){
+                (students, error) in
+                if let students = students {
+                    listViewController.students = [students]
+                    
+                    performUIUpdatesOnMain {
+                        mapViewController.addAnnotationsToMapView(locations: [students])
+                        listViewController.refreshTableView()
+                        
+                        self.stopActivityIndicator(for: self, self.activityIndicator)
+                    }
+                  }
                 }
-              }
-           }
+        }else if selectedViewController is MapViewController {
+            ParseClient.sharedInstance().getStudentLocations{(students, error) in
+                if let students = students{
+                    listViewController.students = students
+                    
+                    performUIUpdatesOnMain {
+                        mapViewController.addAnnotationsToMapView(locations: students)
+                        listViewController.refreshTableView()
+                        
+                        self.stopActivityIndicator(for: self, self.activityIndicator)
+                    }
+                }
         }
+    }
+}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue"{
@@ -125,8 +136,8 @@ class StudentsTabBarController: UITabBarController {
             }
         }
     }
-    
 }
+
 
 
 

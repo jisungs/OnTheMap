@@ -34,7 +34,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         let cellReuseIdentifier = "LocationCell"
         let student = students[(indexPath as NSIndexPath).row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as
-        UITableViewCell!
+        UITableViewCell?
         
         if let studentFirstName = student.firstName{
             firstName = studentFirstName

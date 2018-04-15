@@ -25,7 +25,7 @@ class MapViewController:UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     
-    /*override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         let userID = ParseClient.sharedInstance().userID!
         
@@ -34,7 +34,7 @@ class MapViewController:UIViewController {
                 self.studentLocation = studentLocation
             }
         })
-    }*/
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,11 +52,12 @@ class MapViewController:UIViewController {
     func removeAnnoations(){
         mapView.removeAnnotation(annotations as! MKAnnotation)
         annotations.removeAll()
+        stopActivityIndicator(for: self, activityIndicator)
     }
     
     func addAnnotationsToMapView(locations: [ParseStudent]){
         
-        //removeAnnoations()
+        removeAnnoations()
         
         for dictionary in locations {
             let lat = CLLocationDegrees(dictionary.latitude )
