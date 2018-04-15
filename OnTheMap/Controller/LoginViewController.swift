@@ -11,18 +11,18 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    //variable
+    //MARK: - Variable
     var keyboardOnScreen = false
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
-    //Outlet
+    //MARK: - Outlet
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: BorderedButton!
     @IBOutlet weak var fbLoginButton: BorderedButton!
     
-    //Action
+    //MARK: - Action
     
     //Udacity Login process
     @IBAction func loginPressed(_ sender: Any) {
