@@ -75,6 +75,7 @@ class MapViewController:UIViewController {
             annotation.subtitle = mediaURL
             
             annotations.append(annotation)
+            getStudentLocations() 
         }
         self.mapView.addAnnotations(annotations)
     }
