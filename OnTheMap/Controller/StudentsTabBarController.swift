@@ -75,13 +75,13 @@ class StudentsTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userID = ParseClient.sharedInstance().userID!
+       /* let userID = ParseClient.sharedInstance().userID!
         
         ParseClient.sharedInstance().getStudentLocation(userID, {(studentLocation, error) in
             if let studentLocation = studentLocation {
                 self.studentLocation = studentLocation
             }
-        })
+        })*/
     }
     
     override func viewWillAppear(_ animated: Bool) {

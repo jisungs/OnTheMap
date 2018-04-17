@@ -53,3 +53,9 @@ struct ParseStudent {
     }
     
 }
+
+final class StudentStorage {
+    var students: [ParseStudent] = [ParseStudent]()
+    static let shareInstance = StudentStorage()
+    private init() {}
+}
