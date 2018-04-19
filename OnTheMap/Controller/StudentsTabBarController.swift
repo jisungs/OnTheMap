@@ -89,6 +89,8 @@ class StudentsTabBarController: UITabBarController {
         refreshData()
     }
     
+
+    
     //MARK:- refresh data func
     func refreshData(){
         startActivityIndicator(for: self, activityIndicator, .whiteLarge)
@@ -109,7 +111,9 @@ class StudentsTabBarController: UITabBarController {
                         
                         self.stopActivityIndicator(for: self, self.activityIndicator)
                     }
-                  }
+                } else if error != nil {
+                    self.showAlert("Location error", message: "Could not find location")
+                }
                 }
         }else if selectedViewController is MapViewController {
             ParseClient.sharedInstance().getStudentLocations{(students, error) in
@@ -122,10 +126,13 @@ class StudentsTabBarController: UITabBarController {
                         
                         self.stopActivityIndicator(for: self, self.activityIndicator)
                     }
+                }else if error != nil{
+                    self.showAlert("Location error", message: "Could not find location")
                 }
         }
     }
 }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "infoSegue"{
@@ -137,7 +144,6 @@ class StudentsTabBarController: UITabBarController {
         }
     }
 }
-
 
 
 
