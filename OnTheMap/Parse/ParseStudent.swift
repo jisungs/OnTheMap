@@ -40,7 +40,7 @@ struct ParseStudent {
             //students.append(ParseStudent(dictionary: result))
             
             // check if lat or long are provided otherwise do not add student.
-            if let _ = result["latitude"] as? Double, let _ = result["longitude"] as? Double {
+            if let _ = result["latitude"] as? Double, let _ = result["longtitude"] as? Double {
                 students.append(ParseStudent(dictionary: result))
             }
         }

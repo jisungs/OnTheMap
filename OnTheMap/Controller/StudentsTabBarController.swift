@@ -100,13 +100,13 @@ class StudentsTabBarController: UITabBarController {
         let selectedViewController = self.selectedViewController
         
         if selectedViewController is ListViewController{
-            ParseClient.sharedInstance().getStudentLocation("studentLocation"){
+            ParseClient.sharedInstance().getStudentLocations{
                 (students, error) in
                 if let students = students {
-                    listViewController.students = [students]
+                    listViewController.students = students
                     
                     performUIUpdatesOnMain {
-                        mapViewController.addAnnotationsToMapView(locations: [students])
+                        mapViewController.addAnnotationsToMapView(locations: students)
                         listViewController.refreshTableView()
                         
                         self.stopActivityIndicator(for: self, self.activityIndicator)
