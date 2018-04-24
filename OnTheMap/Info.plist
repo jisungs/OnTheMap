@@ -4,6 +4,45 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allows you to find your location</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationUsageDescription</key>
+	<string></string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+		<key>UINewsstandIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UINewsstandBindingType</key>
+			<string>UINewsstandBindingTypeMagazine</string>
+			<key>UINewsstandBindingEdge</key>
+			<string>UINewsstandBindingEdgeLeft</string>
+		</dict>
+	</dict>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string></string>
+	</array>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
+	<key>CFBundleDisplayName</key>
+	<string></string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -49,6 +88,10 @@
 		</dict>
 	</array>
 	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
+	<key>CFBundleSignature</key>
 	<string></string>
 </dict>
 </plist>

@@ -50,7 +50,7 @@ class MapViewController:UIViewController {
     
     
     func removeAnnoations(){
-        mapView.removeAnnotation(annotations as! MKAnnotation)
+        mapView.removeAnnotations(annotations)
         annotations.removeAll()
         stopActivityIndicator(for: self, activityIndicator)
     }
@@ -75,7 +75,6 @@ class MapViewController:UIViewController {
             annotation.subtitle = mediaURL
             
             annotations.append(annotation)
-            getStudentLocations() 
         }
         self.mapView.addAnnotations(annotations)
     }
@@ -87,18 +86,6 @@ class MapViewController:UIViewController {
 
 
 extension MapViewController: MKMapViewDelegate{
-    
-    func getStudentLocations(){
-        
-        ParseClient.sharedInstance().getStudentLocations(){results, error in
-            if error != nil {
-                self.alert(message: "\(error!.localizedDescription)")
-            }else {
-                print("Getting student location completed")
-            
-            }
-        }
-    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reusedID = "pin"
