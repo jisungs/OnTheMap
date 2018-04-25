@@ -113,7 +113,7 @@ class StudentsTabBarController: UITabBarController {
                     }
                 } else if error != nil {
                     self.showAlert("Location error", message: "Could not find location")
-                }
+                  }
                 }
         }else if selectedViewController is MapViewController {
             ParseClient.sharedInstance().getStudentLocations{(students, error) in
