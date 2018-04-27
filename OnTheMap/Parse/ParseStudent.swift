@@ -14,19 +14,19 @@ struct ParseStudent {
     let firstName: String?
     let lastName: String?
     let mediaURL: String?
-    let latitude: Double
-    let longitude: Double
+    let latitude: Double?
+    let longitude: Double?
     let mapString: String?
     let objectID: String?
     
     // MARK: Initializers
-    init(dictionary: [String:AnyObject]) {
+    init(dictionary: [String: Any]) {
         userID = dictionary[ParseClient.JSONResponseKeys.StudentUniqueKey] as? String
         firstName = dictionary[ParseClient.JSONResponseKeys.StudentFirstName] as? String
         lastName = dictionary[ParseClient.JSONResponseKeys.StudentLastName] as? String
         mediaURL = dictionary[ParseClient.JSONResponseKeys.StudentMediaURL] as? String
-        latitude = dictionary[ParseClient.JSONResponseKeys.StudentLatitude] as! Double
-        longitude = dictionary[ParseClient.JSONResponseKeys.StudentLongitude] as! Double
+        latitude = dictionary[ParseClient.JSONResponseKeys.StudentLatitude] as? Double
+        longitude = dictionary[ParseClient.JSONResponseKeys.StudentLongitude] as? Double
         mapString = dictionary[ParseClient.JSONResponseKeys.StudentMapString] as? String
         objectID = dictionary[ParseClient.JSONResponseKeys.StudentObjectId] as? String
     }
@@ -40,7 +40,7 @@ struct ParseStudent {
             //students.append(ParseStudent(dictionary: result))
             
             // check if lat or long are provided otherwise do not add student.
-            if let _ = result["latitude"] as? Double, let _ = result["longtitude"] as? Double {
+            if (result["latitude"] as? Double) != nil, (result["longtitude"] as? Double) != nil {
                 students.append(ParseStudent(dictionary: result))
             }
         }

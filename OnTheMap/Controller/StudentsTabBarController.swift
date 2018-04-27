@@ -75,13 +75,6 @@ class StudentsTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       /* let userID = ParseClient.sharedInstance().userID!
-        
-        ParseClient.sharedInstance().getStudentLocation(userID, {(studentLocation, error) in
-            if let studentLocation = studentLocation {
-                self.studentLocation = studentLocation
-            }
-        })*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,8 +96,7 @@ class StudentsTabBarController: UITabBarController {
             ParseClient.sharedInstance().getStudentLocations{
                 (students, error) in
                 if let students = students {
-                    listViewController.students = students
-                    
+                    StudentStorage.shareInstance.students = students
                     performUIUpdatesOnMain {
                         mapViewController.addAnnotationsToMapView(locations: students)
                         listViewController.refreshTableView()
@@ -118,8 +110,7 @@ class StudentsTabBarController: UITabBarController {
         }else if selectedViewController is MapViewController {
             ParseClient.sharedInstance().getStudentLocations{(students, error) in
                 if let students = students{
-                    listViewController.students = students
-                    
+                    StudentStorage.shareInstance.students = students
                     performUIUpdatesOnMain {
                         mapViewController.addAnnotationsToMapView(locations: students)
                         listViewController.refreshTableView()

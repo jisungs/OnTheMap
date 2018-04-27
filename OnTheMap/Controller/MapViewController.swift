@@ -16,8 +16,6 @@ class MapViewController:UIViewController {
     
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
-    let locations = [ParseStudent]()
-    
     var annotations = [MKPointAnnotation]()
     
     
@@ -60,8 +58,8 @@ class MapViewController:UIViewController {
         removeAnnoations()
         
         for dictionary in locations {
-            let lat = CLLocationDegrees(dictionary.latitude )
-            let long = CLLocationDegrees(dictionary.longitude )
+            let lat = CLLocationDegrees(dictionary.latitude!)
+            let long = CLLocationDegrees(dictionary.longitude!)
             
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
             

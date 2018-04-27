@@ -11,7 +11,6 @@ import UIKit
 
 class ListViewController: UIViewController {
     
-    var students = [ParseStudent]()
     var firstName = "Please enter your First Name"
     var lastName = "Please enter your Last Name"
     
@@ -27,12 +26,12 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students.count
+        return StudentStorage.shareInstance.students.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellReuseIdentifier = "LocationCell"
-        let student = students[(indexPath as NSIndexPath).row]
+        let student = StudentStorage.shareInstance.students[(indexPath as NSIndexPath).row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as
         UITableViewCell?
         
@@ -48,7 +47,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let student = students[(indexPath as NSIndexPath).row]
+        let student = StudentStorage.shareInstance.students[(indexPath as NSIndexPath).row]
         
         if let urlString = student.mediaURL{
             if let url = URL(string: urlString){
@@ -62,12 +61,6 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    //refresh table data
-    /*func refreshTableView(){
-        if (studentsTabelView) != nil{
-            studentsTabelView.reloadData()
-        }
-    }*/
     func refreshTableView(){
         if let studentsTableView = studentsTabelView {
             studentsTabelView.reloadData()
