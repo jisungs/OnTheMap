@@ -18,13 +18,12 @@ class MapViewController:UIViewController {
     
     var annotations = [MKPointAnnotation]()
     
-    
-    
     @IBOutlet weak var mapView: MKMapView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let userID = ParseClient.sharedInstance().userID!
         
         ParseClient.sharedInstance().getStudentLocation(userID, {(studentLocation, error) in
@@ -37,6 +36,7 @@ class MapViewController:UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshData()
+
     }
     
     //MARK: refreshData()
