@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapViewController:UIViewController {
     
@@ -23,6 +24,7 @@ class MapViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         
         let userID = ParseClient.sharedInstance().userID!
         
