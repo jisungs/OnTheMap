@@ -64,6 +64,8 @@ class MapViewController:UIViewController {
             let long = CLLocationDegrees(dictionary.longitude!)
             
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            let region = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 100)
+            mapView.setRegion(region, animated: true)
             
             let first = dictionary.firstName!
             let last = dictionary.lastName!
@@ -77,6 +79,7 @@ class MapViewController:UIViewController {
             annotations.append(annotation)
         }
         self.mapView.addAnnotations(annotations)
+        
     }
     
     func alert(message: String){
