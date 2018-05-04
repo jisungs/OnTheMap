@@ -20,6 +20,7 @@
 		96137E4A2059BF4E004CCF4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96137E482059BF4E004CCF4C /* Main.storyboard */; };
 		96137E4C2059BF4E004CCF4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96137E4B2059BF4E004CCF4C /* Assets.xcassets */; };
 		96137E4F2059BF4E004CCF4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96137E4D2059BF4E004CCF4C /* LaunchScreen.storyboard */; };
+		96169075209CED2600233509 /* AnnotationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96169074209CED2600233509 /* AnnotationPin.swift */; };
 		962FCC66206AE108003E710F /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962FCC65206AE108003E710F /* LocationViewController.swift */; };
 		9647867B2061A727002EBD80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647867A2061A727002EBD80 /* LoginViewController.swift */; };
 		96615E03205EFF5D00CA49FF /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96615E02205EFF5D00CA49FF /* UdacityConstants.swift */; };
@@ -46,6 +47,7 @@
 		96137E4B2059BF4E004CCF4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96137E4E2059BF4E004CCF4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96137E502059BF4E004CCF4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96169074209CED2600233509 /* AnnotationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPin.swift; sourceTree = "<group>"; };
 		962FCC65206AE108003E710F /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		9647867A2061A727002EBD80 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		96615E02205EFF5D00CA49FF /* UdacityConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				96137E442059BF4E004CCF4C /* AppDelegate.swift */,
 				961236B4205DCF8B00D43FAA /* GCDBlackBox.swift */,
 				961236A3205DAF0E00D43FAA /* BorderedButton.swift */,
+				96169074209CED2600233509 /* AnnotationPin.swift */,
 				96615E04205EFF6B00CA49FF /* Udacity */,
 				961236A7205DBDC800D43FAA /* Parse */,
 				960A41DE205B114B00045F1E /* Controller */,
@@ -211,6 +214,7 @@
 				968A78632065B5C50003D38D /* ListViewController.swift in Sources */,
 				9647867B2061A727002EBD80 /* LoginViewController.swift in Sources */,
 				96133EDA20659EEE0042E95F /* StudentsTabBarController.swift in Sources */,
+				96169075209CED2600233509 /* AnnotationPin.swift in Sources */,
 				960F4C7E20644A7800038A12 /* GeneralViewController.swift in Sources */,
 				9612440B206841740083FE65 /* InfoViewController.swift in Sources */,
 				961236AF205DBF4C00D43FAA /* ParseClient.swift in Sources */,

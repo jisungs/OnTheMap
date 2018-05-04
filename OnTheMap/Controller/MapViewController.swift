@@ -11,13 +11,15 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController:UIViewController {
-    
+class MapViewController:UIViewController, MKMapViewDelegate {
+
     var studentLocation: ParseStudent?
     
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     var annotations = [MKPointAnnotation]()
+    
+    var pin: AnnotatinoPin!
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -26,13 +28,14 @@ class MapViewController:UIViewController {
         super.viewDidLoad()
         mapView.delegate = self
         
-        let userID = ParseClient.sharedInstance().userID!
+        let coordinate = CLLocationCoordinate2D(latitude: 35.2285451, longitude: 128.889351)
+        let region = MKCoordinateRegionMakeWithDistance(coordinate, 100, 1000000)
+        mapView.setRegion(region, animated: true)
         
-        ParseClient.sharedInstance().getStudentLocation(userID, {(studentLocation, error) in
-            if let studentLocation = studentLocation {
-                self.studentLocation = studentLocation
-            }
-        })
+        pin = AnnotatinoPin(title: "My Location", subtitle: "Why other Students location isn't showing? ", coordinate: coordinate)
+        mapView.addAnnotation(pin)
+        
+        //addAnnotationsToMapView(locations: studentLocation?)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +91,7 @@ class MapViewController:UIViewController {
 }
 
 
-extension MapViewController: MKMapViewDelegate{
+/*extension MapViewController: MKMapViewDelegate{
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reusedID = "pin"
@@ -120,4 +123,4 @@ extension MapViewController: MKMapViewDelegate{
         }
     
     }
-}
+}*/
