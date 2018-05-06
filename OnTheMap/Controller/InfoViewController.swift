@@ -28,6 +28,16 @@ class InfoViewController : UIViewController {
         websiteTextField.delegate = self as UITextFieldDelegate
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        unsubscribeToKeyboardNotifications()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mapViewSegue" {
             let controller = segue.destination as! LocationViewController
@@ -61,7 +71,44 @@ class InfoViewController : UIViewController {
 
 extension InfoViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+    func subscribeToKeyboardNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func unsubscribeToKeyboardNotifications(){
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(_ notificatoin:Notification) {
+        if view.frame.origin.y == 0 && websiteTextField.isFirstResponder && locationTextField.isFirstResponder{
+            view.frame.origin.y -= getKeyboardHeight(notificatoin)
+        }else {
+            resetFrame()
+        }
+    }
+    
+    @objc func KeyboardWillHide(_ notificagtion:Notification){
+        if view.frame.origin.y != 0 {
+            resetFrame()
+        }
+    }
+    
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
+    
+    func resetFrame(){
+        view.frame.origin.y = 0;
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -83,6 +130,6 @@ extension InfoViewController: UITextFieldDelegate {
         if UIDevice.current.orientation.isLandscape {
             scrollView.setContentOffset(CGPoint(x:0,y:0), animated: true)
         }
-    }
+    }*/
     
 }

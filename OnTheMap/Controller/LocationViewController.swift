@@ -53,10 +53,10 @@ class LocationViewController: UIViewController{
                     "longitude": self.long as AnyObject ]
                 if let objectID = self.objectID, objectID.isEmpty{
                     self.putToExistingLocation(objectID: objectID, dictionary: studentDict)
-                }else {
+                } else {
                     self.postNewLocation(dictionary: studentDict)
                 }
-            }else if let error = error {
+            } else if let error = error {
                 self.updateUI("Error user info:\(error)")
          }
         }
@@ -66,7 +66,7 @@ class LocationViewController: UIViewController{
         ParseClient.sharedInstance().putToStudentLocation(objectID, dictionary,{(success, error) in
             if success{
                 self.message = Message.PutSuccess
-            }else{
+            } else {
                 self.message = Message.PutError
             }
             self.updateUI(self.message!)
@@ -77,7 +77,7 @@ class LocationViewController: UIViewController{
         ParseClient.sharedInstance().postToStudentLocation(dictionary, {(success, error) in
             if success{
                 self.message = Message.PutSuccess
-            }else {
+            } else {
                 self.message = Message.PutError
             }
             self.updateUI(self.message!)
@@ -90,6 +90,7 @@ class LocationViewController: UIViewController{
         mapView.delegate = self
         finishButton.isHidden = false
         lookupGeocoding()
+        reverseGeocoding(latitude: lat!, longitude: long!)
     }
     
     func updateUI(_ message:String){
@@ -115,7 +116,8 @@ class LocationViewController: UIViewController{
     func reverseGeocoding(latitude: CLLocationDegrees, longitude:CLLocationDegrees){
         
         let location = CLLocation(latitude: latitude, longitude: longitude)
-        geocoder?.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) in
+        
+        geocoder?.geocodeAddressString(userLocationString!, completionHandler: {(placemarks, error) in
             let placemark = placemarks?.first
             let city = placemark?.locality
             let state = placemark?.administrativeArea
@@ -140,6 +142,31 @@ class LocationViewController: UIViewController{
             // Pass values to generate MapView
             self.renderMapWithPinView(latitude: latitude, longitude: longitude, title: address!)
         })
+        /*geocoder?.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) in
+            let placemark = placemarks?.first
+            let city = placemark?.locality
+            let state = placemark?.administrativeArea
+            let zip = placemark?.postalCode
+            let country = placemark?.isoCountryCode
+            
+            var address: String? = ""
+            var comma: String = ","
+            let space: String = " "
+            
+            func appendAddress(_ optionalString: String?, _ seprator: String) {
+                if let optionalString = optionalString {
+                    address?.append("\(optionalString)\(seprator)")
+                }
+            }
+            
+            appendAddress(city, comma)
+            appendAddress(state, space)
+            appendAddress(zip, comma )
+            appendAddress(country, "")
+            
+            // Pass values to generate MapView
+            self.renderMapWithPinView(latitude: latitude, longitude: longitude, title: address!)
+        })*/
     }
     
     func renderMapWithPinView(latitude: CLLocationDegrees, longitude: CLLocationDegrees, title: String) {
@@ -167,7 +194,7 @@ extension LocationViewController: MKMapViewDelegate {
             pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
             pinAnnotationView!.canShowCallout = true
             pinAnnotationView!.pinTintColor = .red
-        }else {
+        } else {
             pinAnnotationView?.annotation = annotation
         }
         return pinAnnotationView

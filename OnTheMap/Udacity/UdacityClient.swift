@@ -14,10 +14,6 @@ class UdacityClient{
     
     var udacityStudent: UdacityStudent? = nil
     
-    init(){
-        
-    }
-    
     //GET
     func taskForGETMethod(_ method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
