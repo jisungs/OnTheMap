@@ -35,7 +35,7 @@ class InfoViewController : UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        unsubscribeToKeyboardNotifications()
+        unsubscribeTosKeyboardNotifications()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,12 +77,18 @@ extension InfoViewController: UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
-    func unsubscribeToKeyboardNotifications(){
+    func unsubscribeTosKeyboardNotifications(){
         NotificationCenter.default.removeObserver(self)
     }
     
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
+    
     @objc func keyboardWillShow(_ notificatoin:Notification) {
-        if view.frame.origin.y == 0 && websiteTextField.isFirstResponder && locationTextField.isFirstResponder{
+        if view.frame.origin.y == 0 && websiteTextField.isFirstResponder {
             view.frame.origin.y -= getKeyboardHeight(notificatoin)
         }else {
             resetFrame()
@@ -93,12 +99,6 @@ extension InfoViewController: UITextFieldDelegate {
         if view.frame.origin.y != 0 {
             resetFrame()
         }
-    }
-    
-    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-        return keyboardSize.cgRectValue.height
     }
     
     func resetFrame(){
