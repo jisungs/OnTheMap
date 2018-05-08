@@ -30,12 +30,14 @@ class InfoViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        resetFrame()
         subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         unsubscribeTosKeyboardNotifications()
+        resetFrame()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,9 +90,10 @@ extension InfoViewController: UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(_ notificatoin:Notification) {
-        if view.frame.origin.y == 0 && websiteTextField.isFirstResponder {
+       if view.frame.origin.y == 0 && websiteTextField.isFirstResponder{
             view.frame.origin.y -= getKeyboardHeight(notificatoin)
-        }else {
+        }
+        else {
             resetFrame()
         }
     }
