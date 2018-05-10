@@ -90,15 +90,18 @@ extension InfoViewController: UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(_ notificatoin:Notification) {
+        //self.view.frame.origin.y = -150
        if view.frame.origin.y == 0 && websiteTextField.isFirstResponder{
-            view.frame.origin.y -= getKeyboardHeight(notificatoin)
-        }
-        else {
+            view.frame.origin.y -= 100
+       } else if view.frame.origin.y == 0 && locationTextField.isFirstResponder{
+            view.frame.origin.y -= 100
+        } else {
             resetFrame()
         }
     }
     
     @objc func KeyboardWillHide(_ notificagtion:Notification){
+       // self.view.frame.origin.y = 0
         if view.frame.origin.y != 0 {
             resetFrame()
         }
