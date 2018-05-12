@@ -27,15 +27,6 @@ class MapViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        
-        //let coordinate = CLLocationCoordinate2D(latitude: 35.2285451, longitude: 128.889351)
-        //let region = MKCoordinateRegionMakeWithDistance(coordinate, 100, 1000000)
-        //mapView.setRegion(region, animated: true)
-        
-        //pin = AnnotatinoPin(title: "My Location", subtitle: "Why other Students location isn't showing? ", coordinate: coordinate)
-        //mapView.addAnnotation(pin)
-        
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {

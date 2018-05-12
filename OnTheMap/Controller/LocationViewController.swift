@@ -90,7 +90,7 @@ class LocationViewController: UIViewController{
         mapView.delegate = self
         finishButton.isHidden = false
         lookupGeocoding()
-        reverseGeocoding(latitude: lat!, longitude: long!)
+        //reverseGeocoding(latitude: lat!, longitude: long!)
     }
     
     func updateUI(_ message:String){
@@ -113,7 +113,8 @@ class LocationViewController: UIViewController{
           }
        }
     
-    func reverseGeocoding(latitude: CLLocationDegrees, longitude:CLLocationDegrees){
+    
+    func reverseGeocoding(latitude: CLLocationDegrees , longitude:CLLocationDegrees){
         
         let location = CLLocation(latitude: latitude, longitude: longitude)
         
