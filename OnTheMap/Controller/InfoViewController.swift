@@ -90,11 +90,12 @@ extension InfoViewController: UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(_ notificatoin:Notification) {
-        //self.view.frame.origin.y = -150
-       if view.frame.origin.y == 0 && websiteTextField.isFirstResponder{
+        if  view.frame.origin.y == 0 && websiteTextField.isFirstResponder {
             view.frame.origin.y -= 100
-       } else if view.frame.origin.y == 0 && locationTextField.isFirstResponder{
-            view.frame.origin.y -= 100
+       } else if websiteTextField.isEditing {
+            view.frame.origin.y -= 70
+        } else if view.frame.origin.y == 0 && locationTextField.isFirstResponder {
+            view.frame.origin.y -= 70
         } else {
             resetFrame()
         }
@@ -114,28 +115,5 @@ extension InfoViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        var y = 0
-        if textField == websiteTextField {
-            y = 120
-        } else if textField == locationTextField {
-            y = 60
-          }
-        
-        if UIDevice.current.orientation.isLandscape {
-            scrollView.setContentOffset(CGPoint(x:0,y:y), animated: true)
-        }
-      }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if UIDevice.current.orientation.isLandscape {
-            scrollView.setContentOffset(CGPoint(x:0,y:0), animated: true)
-        }
-    }*/
     
 }
