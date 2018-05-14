@@ -90,7 +90,7 @@ class LocationViewController: UIViewController{
         mapView.delegate = self
         finishButton.isHidden = false
         lookupGeocoding()
-        //reverseGeocoding(latitude: lat!, longitude: long!)
+        reverseGeocoding()
     }
     
     func updateUI(_ message:String){
@@ -114,11 +114,16 @@ class LocationViewController: UIViewController{
        }
     
     
-    func reverseGeocoding(latitude: CLLocationDegrees , longitude:CLLocationDegrees){
-        
-        let location = CLLocation(latitude: latitude, longitude: longitude)
+    func reverseGeocoding(){
         
         geocoder?.geocodeAddressString(userLocationString!, completionHandler: {(placemarks, error) in
+            
+            guard error == nil else {
+                /*The location was not found, present a dialog informing the user about the error*/
+              return  print("The location was not found.")
+            }
+            
+            let coordinates = placemarks!.first!.location!.coordinate
             let placemark = placemarks?.first
             let city = placemark?.locality
             let state = placemark?.administrativeArea
@@ -141,33 +146,9 @@ class LocationViewController: UIViewController{
             appendAddress(country, "")
             
             // Pass values to generate MapView
-            self.renderMapWithPinView(latitude: latitude, longitude: longitude, title: address!)
+            self.renderMapWithPinView(latitude: coordinates.latitude, longitude: coordinates.longitude, title: self.userLocationString!)
         })
-        /*geocoder?.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) in
-            let placemark = placemarks?.first
-            let city = placemark?.locality
-            let state = placemark?.administrativeArea
-            let zip = placemark?.postalCode
-            let country = placemark?.isoCountryCode
-            
-            var address: String? = ""
-            var comma: String = ","
-            let space: String = " "
-            
-            func appendAddress(_ optionalString: String?, _ seprator: String) {
-                if let optionalString = optionalString {
-                    address?.append("\(optionalString)\(seprator)")
-                }
-            }
-            
-            appendAddress(city, comma)
-            appendAddress(state, space)
-            appendAddress(zip, comma )
-            appendAddress(country, "")
-            
-            // Pass values to generate MapView
-            self.renderMapWithPinView(latitude: latitude, longitude: longitude, title: address!)
-        })*/
+        
     }
     
     func renderMapWithPinView(latitude: CLLocationDegrees, longitude: CLLocationDegrees, title: String) {

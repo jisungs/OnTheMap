@@ -17,6 +17,12 @@ class ListViewController: UIViewController {
     
     @IBOutlet weak var studentsTabelView: UITableView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        studentsTabelView.delegate = self
+        studentsTabelView.dataSource = self
+    }
+    
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
         refreshTableView()

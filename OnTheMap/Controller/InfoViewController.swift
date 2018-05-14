@@ -91,7 +91,7 @@ extension InfoViewController: UITextFieldDelegate {
     
     @objc func keyboardWillShow(_ notificatoin:Notification) {
         if  view.frame.origin.y == 0 && websiteTextField.isFirstResponder {
-            view.frame.origin.y -= 100
+            view.frame.origin.y -= 70
        } else if websiteTextField.isEditing {
             view.frame.origin.y -= 70
         } else if view.frame.origin.y == 0 && locationTextField.isFirstResponder {
@@ -114,6 +114,11 @@ extension InfoViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return false
     }
     
 }

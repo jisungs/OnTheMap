@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -198,7 +197,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="I2e-2L-guT" kind="show" id="kOz-07-w0N"/>
+                                            <segue destination="I2e-2L-guT" kind="show" identifier="mapViewSegue" id="kOz-07-w0N"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -294,37 +293,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WaE-oI-BG1" id="WEq-jD-oac">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zn-oS-TLK">
-                                                    <rect key="frame" x="49" y="29.5" width="44" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0T-pM-Hkv">
-                                                    <rect key="frame" x="55" y="10.5" width="33" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pin" translatesAutoresizingMaskIntoConstraints="NO" id="bKZ-AD-Jrz">
-                                                    <rect key="frame" x="7" y="11" width="40" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="yc2-pn-ifX"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="j0T-pM-Hkv" secondAttribute="bottom" constant="25.5" id="335-D1-lgB"/>
-                                                <constraint firstItem="3Zn-oS-TLK" firstAttribute="top" secondItem="j0T-pM-Hkv" secondAttribute="bottom" constant="-2" id="HD3-ya-1ay"/>
-                                                <constraint firstItem="bKZ-AD-Jrz" firstAttribute="top" secondItem="WEq-jD-oac" secondAttribute="topMargin" id="JGu-4G-O9g"/>
-                                                <constraint firstItem="j0T-pM-Hkv" firstAttribute="leading" secondItem="bKZ-AD-Jrz" secondAttribute="trailing" constant="8" id="L5P-52-BT1"/>
-                                                <constraint firstItem="3Zn-oS-TLK" firstAttribute="top" secondItem="WEq-jD-oac" secondAttribute="topMargin" constant="18" id="PfR-aR-JuB"/>
-                                                <constraint firstItem="bKZ-AD-Jrz" firstAttribute="leading" secondItem="WEq-jD-oac" secondAttribute="leadingMargin" constant="-8" id="RjP-Fw-pJW"/>
-                                                <constraint firstItem="j0T-pM-Hkv" firstAttribute="centerX" secondItem="3Zn-oS-TLK" secondAttribute="centerX" id="UXd-7l-wzT"/>
-                                                <constraint firstItem="3Zn-oS-TLK" firstAttribute="bottom" secondItem="bKZ-AD-Jrz" secondAttribute="bottom" constant="-4.5" id="Zfu-Nj-CLb"/>
-                                                <constraint firstItem="bKZ-AD-Jrz" firstAttribute="top" secondItem="j0T-pM-Hkv" secondAttribute="top" constant="0.5" id="cWp-eX-4Cf"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -422,7 +390,6 @@
         <image name="icon_addpin" width="24" height="24"/>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
-        <image name="icon_pin" width="24" height="24"/>
         <image name="icon_refresh" width="24" height="24"/>
         <image name="icon_world" width="52" height="67"/>
         <image name="udacity_logo" width="200" height="200"/>
