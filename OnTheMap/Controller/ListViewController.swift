@@ -39,7 +39,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         let cellReuseIdentifier = "LocationCell"
         let student = StudentStorage.shareInstance.students[(indexPath as NSIndexPath).row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as
-        UITableViewCell?
+        UITableViewCell? 
         
         if let studentFirstName = student.firstName{
             firstName = studentFirstName

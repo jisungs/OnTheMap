@@ -32,7 +32,7 @@ class MapViewController:UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshData()
-
+        stopActivityIndicator(for: self, activityIndicator)
     }
     
     //MARK: refreshData()
@@ -72,15 +72,10 @@ class MapViewController:UIViewController {
             
             annotations.append(annotation)
         }
-        self.mapView.addAnnotations(annotations)
-        
-    }
-    
-    func alert(message: String){
+        mapView.addAnnotations(annotations)
         
     }
 }
-
 
 extension MapViewController: MKMapViewDelegate{
     
