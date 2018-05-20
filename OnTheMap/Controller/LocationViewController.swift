@@ -42,7 +42,10 @@ class LocationViewController: UIViewController{
         startActivityIndicator(for: self, activityIndicator, .whiteLarge)
         
         UdacityClient.sharedInstance().getUserInfo{(student, error) in
-            if let student = student {
+            
+            if let error = error {
+                self.updateUI("Error user info:\(error)")
+               } else if let student = student {
                 let studentDict: [String:AnyObject] = [
                     "uniqueKey": student.userID as AnyObject,
                     "firstName": student.firstName as AnyObject,
@@ -56,9 +59,7 @@ class LocationViewController: UIViewController{
                 } else {
                     self.postNewLocation(dictionary: studentDict)
                 }
-            } else if let error = error {
-                self.updateUI("Error user info:\(error)")
-         }
+            }
         }
      }
     
@@ -120,6 +121,7 @@ class LocationViewController: UIViewController{
             
             guard error == nil else {
                 /*The location was not found, present a dialog informing the user about the error*/
+                self.showAlert("The location was not found", message: "Error")
               return  print("The location was not found.")
             }
             
