@@ -39,12 +39,14 @@ class LocationViewController: UIViewController{
     @IBAction func finishPressed(_ sender: Any) {
         
         finishButton.isEnabled = false
+        
         startActivityIndicator(for: self, activityIndicator, .whiteLarge)
         
         UdacityClient.sharedInstance().getUserInfo{(student, error) in
             
             if let error = error {
                 self.updateUI("Error user info:\(error)")
+                self.showAlert("The location was not found", message: "Location Error")
                } else if let student = student {
                 let studentDict: [String:AnyObject] = [
                     "uniqueKey": student.userID as AnyObject,
@@ -117,6 +119,7 @@ class LocationViewController: UIViewController{
     
     func reverseGeocoding(){
         
+        startActivityIndicator(for: self, activityIndicator, .whiteLarge)
         geocoder?.geocodeAddressString(userLocationString!, completionHandler: {(placemarks, error) in
             
             guard error == nil else {
@@ -150,6 +153,7 @@ class LocationViewController: UIViewController{
             // Pass values to generate MapView
             self.renderMapWithPinView(latitude: coordinates.latitude, longitude: coordinates.longitude, title: self.userLocationString!)
         })
+        stopActivityIndicator(for: self, activityIndicator)
         
     }
     

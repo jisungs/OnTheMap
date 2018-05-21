@@ -102,7 +102,6 @@ extension InfoViewController: UITextFieldDelegate {
     }
     
     @objc func KeyboardWillHide(_ notificagtion:Notification){
-       // self.view.frame.origin.y = 0
         if view.frame.origin.y != 0 {
             resetFrame()
         }
