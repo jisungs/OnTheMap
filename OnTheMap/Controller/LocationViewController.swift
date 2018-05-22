@@ -152,8 +152,9 @@ class LocationViewController: UIViewController{
             
             // Pass values to generate MapView
             self.renderMapWithPinView(latitude: coordinates.latitude, longitude: coordinates.longitude, title: self.userLocationString!)
+            self.stopActivityIndicator(for: self, self.activityIndicator)
         })
-        stopActivityIndicator(for: self, activityIndicator)
+        
         
     }
     
