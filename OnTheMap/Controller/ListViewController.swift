@@ -74,7 +74,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension   ListViewController  {
+extension ListViewController{
     func notifyUser(_ title:String?, message: String) -> Void {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         let action = UIAlertAction(title:"Dismiss", style: .default, handler: nil)

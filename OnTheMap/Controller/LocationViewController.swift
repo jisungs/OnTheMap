@@ -125,6 +125,7 @@ class LocationViewController: UIViewController{
             guard error == nil else {
                 /*The location was not found, present a dialog informing the user about the error*/
                 self.showAlert("The location was not found", message: "Error")
+                self.stopActivityIndicator(for: self, self.activityIndicator)
               return  print("The location was not found.")
             }
             

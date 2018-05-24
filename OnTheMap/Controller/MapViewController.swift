@@ -14,15 +14,11 @@ import CoreLocation
 class MapViewController:UIViewController {
 
     var studentLocation: ParseStudent?
-    
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
-    
     var annotations = [MKPointAnnotation]()
-    
     var pin: AnnotatinoPin!
     
     @IBOutlet weak var mapView: MKMapView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +35,7 @@ class MapViewController:UIViewController {
     func refreshData(){
         //get activity inspector
         startActivityIndicator(for: self, activityIndicator, .whiteLarge)
-        
     }
-    
     
     func removeAnnoations(){
         mapView.removeAnnotations(annotations)
@@ -50,9 +44,7 @@ class MapViewController:UIViewController {
     }
     
     func addAnnotationsToMapView(locations: [ParseStudent]){
-        
         removeAnnoations()
-        
         for dictionary in locations {
             let lat = CLLocationDegrees(dictionary.latitude!)
             let long = CLLocationDegrees(dictionary.longitude!)
@@ -73,17 +65,13 @@ class MapViewController:UIViewController {
             annotations.append(annotation)
         }
         mapView.addAnnotations(annotations)
-        
     }
 }
 
 extension MapViewController: MKMapViewDelegate{
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reusedID = "pin"
-        
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reusedID) as? MKPinAnnotationView
-        
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reusedID)
             pinView!.canShowCallout = true

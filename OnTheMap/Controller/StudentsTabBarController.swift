@@ -48,6 +48,18 @@ class StudentsTabBarController: UITabBarController {
         present(alertController, animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshData()
+    }
+    
+    //MARK: - display error
+    func displayError(_ errorString:String?){
+        if let errorString = errorString {
+            print(errorString)
+        }
+    }
+    
     //MARK: -  logout message show
     func completeLogout(){
         //MARK: - ADD ActivityIdicator
@@ -65,20 +77,6 @@ class StudentsTabBarController: UITabBarController {
                }
             }
          }
-    
-    //MARK: - display error
-    func displayError(_ errorString:String?){
-        if let errorString = errorString {
-            print(errorString)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        refreshData()
-    }
-    
-
     
     //MARK:- refresh data func
     func refreshData(){
